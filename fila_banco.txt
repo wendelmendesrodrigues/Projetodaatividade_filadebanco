@@ -1,0 +1,69 @@
+Fila de Banco
+
+DECLARAÇÃO:
+
+NUMERO[10]: inteiro;
+RESPOSTAPRIORITÁRIO: texto;
+TAMANHOFILA: inteiro;
+POSIÇÃO: inteiro;
+
+INÍCIO
+
+ENQUANTO VERDADEIRO FAÇA
+
+PARA i=0 ate 9 passo 1 faca
+NUMERO[i] <-1
+FIM PARA
+        
+	escreva ("Essa pessoa é prioritária? (S/N)");
+    leia (RESPOSTAPRIORITÁRIO);
+	
+    SE (RESPOSTAPRIORITÁRIO = "S") ENTÃO
+            POSIÇÃO <-0
+    SENÃO
+		SE TAMANHOFILA > 0 ENTÃO
+            PARA i DE 1 ATÉ TAMANHOFILA 
+				SE NUMERO[i][1] = "prioritário" ENTÃO
+                    POSIÇÃO <- i
+				FIM SE
+			FIM PARA
+		FIM SE
+    FIM SE
+	
+	SE POSIÇÃO = 0 ENTÃO
+		TAMANHOFILA <- TAMANHOFILA + 1
+        NUMERO[TAMANHOFILA] <- "prioritário"
+        escreva ("Pessoa prioritária na fila");
+    SENÃO 
+		SE
+		TAMANHOFILA <- TAMANHOFILA + 1
+			PARA i DE TAMANHOFILA ATÉ POSIÇÃO + 1 FAÇA
+			fila[i] <- fila[i - 1]
+			FIM PARA
+			NUMERO[POSIÇÃO + 1] <- "prioritário"
+			escreva ("Pessoa prioritária na fila");
+		SENÃO
+			TAMANHOFILA <- TAMANHOFILA + 1
+			escreva	("Pessoa adicionada na fila");
+        FIM SE
+		
+		SE TAMANHOFILA = 0 ENTÃO
+			escreva ("A fila está vazia");
+		SENÃO
+			escreva ("Próximo a ser atendido") + NUMERO[1]
+				PARA i DE 1 ATÉ TAMANHOFILA - 1 FAÇA
+				NUMERO[i] <- NUMERO[i+1]
+				FIM PARA
+
+				TAMANHOFILA <- TAMANHOFILA - 1
+			SENÃO SE
+				escreva ("Erro. Tente novamente");
+			FIM SE
+		FIM SE
+    FIM SE
+	
+FIM ENQUANTO
+
+FIM
+		
+			
